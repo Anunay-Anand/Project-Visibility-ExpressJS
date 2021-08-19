@@ -28,7 +28,7 @@ def text_to_speech(text):
     engine.runAndWait()
     language = 'en'
     myobj = gTTS(text=text, lang=language, slow=True)
-    myobj.save("public/chamar/sample.mp3")
+    myobj.save("public/audio/sample.mp3")
 
 def scrape(urls):
     # print('text scrape')
@@ -63,7 +63,7 @@ def find_link(links):
     for key in links:
         # 'find' function returns index. If for any key, we find a non negative index, it means the key is present in our string
         if s.find(key) != -1:
-            return links[key] if key != 'main' else '/'
+            return links[key] if key != 'home' else '/'
     return 'stop'
 
 def program(urls):
@@ -86,7 +86,7 @@ def program(urls):
     html = page.read().decode("utf-8")
     soup = BeautifulSoup(html, "html.parser")
     text = soup.get_text()
-    text = text.replace('\n',' ').split('Technology')[-1]
+    text = text.replace('\n',' ').split('Technologies')[-1]
     text_to_speech(text)
 
 # import threading
